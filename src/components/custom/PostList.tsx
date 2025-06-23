@@ -7,7 +7,6 @@ export default function PostList({ posts }: { posts: any[] }) {
 
   const handleDelete = async (_id: number) => {
     await deleteUser(_id)
-    // Optionally: trigger a re-fetch or refresh
   }
 
 
