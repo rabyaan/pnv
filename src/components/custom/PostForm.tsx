@@ -39,7 +39,7 @@ export default function PostForm() {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     await createPost(values as User)
-    console.log(values);
+    form.reset();
   }
   return (
     <Form {...form}>

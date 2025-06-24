@@ -3,17 +3,13 @@
 import React from 'react'
 import { deleteUser } from '../../app/actions/post'
 
-export default function PostList({ posts }: { posts: any[] }) {
+export default function PostList({ posts, refreshPosts }: { posts: any[], refreshPosts: () => void }) {
 
   const handleDelete = async (_id: number) => {
     await deleteUser(_id)
+    refreshPosts();
   }
 
-
-
-
-
-  
   return (
     <>
       {posts.map(post => (
