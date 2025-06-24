@@ -13,9 +13,17 @@ export async function createPost(data: User) {
 }
 
 export async function deleteUser(_id: number) {
-  const deletePost = await prisma.post.delete({
-    where: {
-      id: _id,
-    },
-  });
+  try {
+    const deletePost = await prisma.post.delete({
+      where: {
+        id: _id,
+      },
+    });
+    return deletePost;
+  } catch (error: any) {
+    if (error.code === 'P2025') {
+      return { error: 'Post not found' };
+    }
+    throw error;
+  }
 }
